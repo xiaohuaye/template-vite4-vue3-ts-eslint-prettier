@@ -1,5 +1,4 @@
 {
-  "*.{vue,ts,tsx}": ["vue-tsc", "eslint --fix"],
-  "*.{js,jsx}": ["eslint --fix"],
-  "*.{vue,ts,tsx,js,jsx}": ["prettier --write"]
+  "*.{vue,ts,tsx,js,jsx}": ["eslint --fix"],
+  "*.{vue,ts,tsx,js,jsx,json,html,yaml,md,css,less,scss}": ["prettier --write"]
 }
