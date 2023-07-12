@@ -5,6 +5,16 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "outDir": "./dist/",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": [
+        "src/components/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
