@@ -1,10 +1,7 @@
 <script setup lang="ts">
+defineProps<{ msg: string }>();
 
-defineProps<{ msg: string }>()
-
-
-console.log('test husky');
-
+console.log("test husky");
 </script>
 
 <template>
