@@ -1,5 +1,5 @@
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig, loadEnv } from "vite";
+import vue from "@vitejs/plugin-vue";
 import { svgBuilder } from "./src/plugins/svgBuilder";
 import * as path from "path";
 
@@ -22,8 +22,7 @@ export default defineConfig(({ command, mode }) => {
     },
     assetsInclude: ["@/assets", /^w+\.ttf/],
     optimizeDeps: {
-      include: [
-      ],
+      include: [],
     },
     plugins: [vue(), svgBuilder("./src/icons/svg/")],
     css: {
@@ -63,8 +62,7 @@ export default defineConfig(({ command, mode }) => {
       },
       rollupOptions: {
         output: {
-          manualChunks: {
-          },
+          manualChunks: {},
         },
       },
       minify: "terser" as const,
@@ -87,4 +85,3 @@ export default defineConfig(({ command, mode }) => {
 
   return basicOption;
 });
-
