@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "lint": "eslint src --fix --ext .ts,.tsx,.js,.jsx,.vue",
     "prettier": "./node_modules/prettier/bin-prettier.js . --write",
-    "check": "vue-tsc && yarn lint && yarn prettier"
+    "check": "vue-tsc && yarn lint && yarn prettier",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "xiaohuaye",

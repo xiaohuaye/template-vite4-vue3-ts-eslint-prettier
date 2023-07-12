@@ -1,6 +1,10 @@
 <script setup lang="ts">
 
 defineProps<{ msg: string }>()
+
+
+console.log('test husky');
+
 </script>
 
 <template>
