@@ -8,7 +8,7 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix --ext .ts,.tsx,.js,.jsx,.vue",
-    "prettier": "./node_modules/prettier/bin-prettier.js . --write",
+    "prettier": "prettier . --write",
     "check": "vue-tsc && yarn lint && yarn prettier",
     "prepare": "husky install"
   },
