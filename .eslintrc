@@ -88,7 +88,7 @@
     // 强制一行的最大长度
     "max-len": "off",
     // 要求方法链中每个调用都有一个换行符 （只有两个时不要求）
-    "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+    "newline-per-chained-call": "off",
     // 不允许多个空行
     "no-multiple-empty-lines": "error",
     // 要求使用 let 或 const 而不是 var
