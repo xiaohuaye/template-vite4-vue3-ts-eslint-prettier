@@ -1,14 +1,14 @@
-import { defineConfig, loadEnv } from "vite";
-import vue from "@vitejs/plugin-vue";
 import { svgBuilder } from "./src/plugins/svgBuilder";
+import vue from "@vitejs/plugin-vue";
 import * as path from "path";
+import { defineConfig } from "vite";
 
 function pathResolve(dir: string) {
   return path.resolve(__dirname, dir);
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   const basicOption = {
     base: "./",
     define: {
@@ -36,6 +36,7 @@ export default defineConfig(({ command, mode }) => {
           additionalData: '@import "./src/style/variable.less";',
           // 支持内联 JavaScript
           javascriptEnabled: true,
+          math: "always",
         },
       },
     },
@@ -66,16 +67,6 @@ export default defineConfig(({ command, mode }) => {
         },
       },
       minify: "terser" as const,
-      terserOptions: {
-        compress: {
-          drop_console:
-            command === "build" &&
-            loadEnv(mode, __dirname).VITE_API_ENV === "prod",
-          drop_debugger:
-            command === "build" &&
-            loadEnv(mode, __dirname).VITE_API_ENV === "prod",
-        },
-      },
     },
   };
 
