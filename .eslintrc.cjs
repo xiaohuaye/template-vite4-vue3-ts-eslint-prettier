@@ -1,61 +1,53 @@
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
   },
-  "extends": [
+  extends: [
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
   ],
-  "parser": "vue-eslint-parser",
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "parser": "@typescript-eslint/parser",
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+  parser: "vue-eslint-parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    parser: "@typescript-eslint/parser",
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  "plugins": ["vue", "@typescript-eslint", "import"],
-  "rules": {
-    "@typescript-eslint/no-namespace": "off",
-    /** 函数必须有返回值的配置 */
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    // 组件名为多单词组成
-    "vue/multi-word-component-names": "off",
+  plugins: ["vue", "@typescript-eslint", "import"],
+  rules: {
     "no-new": "error",
     "no-new-func": "error",
     "no-throw-literal": "error",
     "no-useless-rename": "error",
-    "quote-props": "off",
-    "quotes": "off",
-    // 禁止不必要的括号
-    "no-extra-parens": "warn",
+
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     // vue computed中 是否可以使用其副作用(现在先为warn，后期为error)
     "vue/no-side-effects-in-computed-properties": "warn",
     // 忽略花括号在同一行（内容也就在同一行了）的语句块中的最后一个分号
-    "semi": "off",
+    semi: ["error", "always"],
     // 不考虑缩进
-    "no-tabs": "off",
-    // 同一行时，最后一个逗号不需要
-    "comma-dangle": [
+    "no-tabs": [
       "error",
       {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "always-multiline",
-        "exports": "always-multiline",
-        "functions": "only-multiline"
-      }
+        allowIndentationTabs: true,
+      },
     ],
+    // 同一行时，最后一个逗号不需要
+    "comma-dangle": ["error", "always-multiline"],
     // 可以使用any
     "@typescript-eslint/no-explicit-any": "off",
     // 强制在 function的左括号之前使用一致的空格
-    "space-before-function-paren": "off",
+    "space-before-function-paren": [
+      "warn",
+      { anonymous: "always", named: "never", asyncArrow: "always" },
+    ],
     // 类型导入使用 import type
     "@typescript-eslint/consistent-type-imports": "error",
     // getter和setter必须成对出现
@@ -63,15 +55,14 @@
     // 把 var 语句看作是在块级作用域范围之内
     "block-scoped-var": "error",
     // 强制使用 ===
-    "eqeqeq": ["error", "always"],
+    eqeqeq: ["error", "always"],
     // 禁用 eval()
     "no-eval": "error",
     // 禁止不必要的函数绑定
     "no-extra-bind": "error",
     // 禁用标签语句
     "no-labels": "error",
-    // 如果 if、else if、else、for、while 和 do 的代码主体中强制使用大括号。
-    "curly": ["error"],
+    curly: "off",
     // 此规则的目的是在 switch 语句中强制声明 default 分支， 确实没有可以在最后一个 case 分支下，使用
     // no default 来表明此处不需要 default 分支。注释可以任何形式出现，比如 // No Default。
     "default-case": "error",
@@ -84,19 +75,13 @@
     // 禁止对 function 的参数进行重新赋值
     "no-param-reassign": "error",
     // 强制使用骆驼拼写法命名约定
-    "camelcase": "error",
-    // 强制一行的最大长度
-    "max-len": "off",
-    // 要求方法链中每个调用都有一个换行符 （只有两个时不要求）
-    "newline-per-chained-call": "off",
+    camelcase: "error",
     // 不允许多个空行
     "no-multiple-empty-lines": "error",
     // 要求使用 let 或 const 而不是 var
     "no-var": "error",
-    // 函数参数换行
-    "function-paren-newline": "off",
     // 超过3个元素数组换行
-    "array-element-newline": "off",
+    "array-element-newline": ["error", "consistent"],
     // 可以出现未使用过的表达式
     "no-unused-expressions": "off",
     // return 表达式时提出警告
@@ -107,13 +92,34 @@
     "no-useless-return": "error",
     // 禁止不必要的字符串字面量或模板字面量的连接
     "no-useless-concat": "error",
-    "indent": "off",
+
     "vue/v-on-event-hyphenation": "off",
+
+    "vue/attribute-hyphenation": "off",
+
+    "vue/component-definition-name-casing": "off",
+
+    indent: "off",
+
+    "vue/no-v-html": "off",
+
+    "@typescript-eslint/no-duplicate-enum-values": "off",
+
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+
+    "newline-per-chained-call": "off",
+
+    "function-paren-newline": "off",
+
+    "no-extra-parens": "off",
+
+    "quote-props": ["error", "as-needed"],
+
     // import 语句排序分组
     "import/order": [
       "warn",
       {
-        "groups": [
+        groups: [
           [
             "index",
             "external",
@@ -122,50 +128,54 @@
             "internal",
             "builtin",
             "object",
-            "type"
-          ]
+            "type",
+          ],
         ],
-        "pathGroups": [
+        pathGroups: [
           {
-            "pattern": "vue",
-            "group": "index"
+            pattern: "vue",
+            group: "index",
           },
           {
-            "pattern": "ant-design-vue/**",
-            "group": "external"
+            pattern: "ant-design-vue/**",
+            group: "external",
           },
           {
-            "pattern": "@v100/**",
-            "group": "external"
+            pattern: "@v100/**",
+            group: "external",
           },
           {
-            "pattern": "@/type",
-            "group": "type"
+            pattern: "@/type",
+            group: "type",
           },
           {
-            "pattern": "@",
-            "group": "internal"
-          }
+            pattern: "@",
+            group: "internal",
+          },
         ],
-        "pathGroupsExcludedImportTypes": ["vue", "@v100"],
+        pathGroupsExcludedImportTypes: ["vue", "@v100", "@poct"],
         "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ]
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ],
   },
-  "overrides": [
+  overrides: [
     {
-      "files": [
+      files: [
         "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        "**/tests/unit/**/*.spec.{j,t}s?(x)",
       ],
-      "env": {
-        "jest": true
-      }
-    }
+      env: {
+        jest: true,
+      },
+    },
   ],
-  "root": true
-}
+  root: true,
+  globals: {
+    NodeJS: true,
+    NodeListOf: true,
+  },
+};
