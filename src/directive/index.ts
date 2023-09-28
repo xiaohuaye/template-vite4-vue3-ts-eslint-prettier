@@ -20,7 +20,7 @@ export const install = (app: App) => {
               "CONDITION",
               CONDITION,
               Math.floor(scrollHeight - scrollTop - 1),
-              clientHeight
+              clientHeight,
             );
             binding.value.callback();
           }

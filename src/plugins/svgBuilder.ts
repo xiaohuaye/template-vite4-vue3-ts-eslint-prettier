@@ -36,14 +36,14 @@ function findSvgFile(dir: string): string[] {
                 height = s3;
               }
               return "";
-            }
+            },
           );
           if (!hasViewBox.test($2)) {
             content += `viewBox="0 0 ${width} ${height}"`;
           }
           return `<symbol id="${idPerfix}-${dirent.name.replace(
             ".svg",
-            ""
+            "",
           )}" ${content}>`;
         })
         .replace("</svg>", "</symbol>");
@@ -55,7 +55,7 @@ function findSvgFile(dir: string): string[] {
 
 export const svgBuilder = (
   path: string,
-  perfix = "icon"
+  perfix = "icon",
 ): Plugin | undefined => {
   if (path === "") {
     return;
@@ -74,7 +74,7 @@ export const svgBuilder = (
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; width: 0; height: 0">
               ${res.join("")}
             </svg>
-        `
+        `,
       );
     },
   };
